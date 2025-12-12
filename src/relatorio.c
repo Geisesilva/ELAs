@@ -23,12 +23,12 @@ void gerarRelatorio(Profissional lista[], int count) {
 
     FILE *f = fopen("data/relatorio_elas.txt", "w");
     if (f == NULL) {
-        printf("Erro ao criar o relatório.\n");
+        printf("Erro ao criar o relatorio.\n");
         return;
     }
 
-    time_t agora = time(NULL);
-    struct tm *t = localtime(&agora);
+    time_t agora = time(NULL); //pegar o horário atual
+    struct tm *t = localtime(&agora); //localtime: transforma em dada e hora legivel
 
     fprintf(f, "====================================================\n");
     fprintf(f, "                     RELATÓRIO ELAs\n");
@@ -38,22 +38,22 @@ void gerarRelatorio(Profissional lista[], int count) {
             t->tm_hour, t->tm_min);
 
     if (count == 0) {
-        fprintf(f, "Nenhuma profissional cadastrada.\n");
+        fprintf(f, "Nenhuma profissional cadastrada.\n"); //escreve texto no arquivo.
     } else {
         for (int i = 0; i < count; i++) {
             fprintf(f, "ID: %d\n", lista[i].id);
             fprintf(f, "Nome: %s\n", lista[i].nome);
-            fprintf(f, "Área: %s\n", lista[i].area);
+            fprintf(f, "Area: %s\n", lista[i].area);
             fprintf(f, "Contato: %s\n", lista[i].contato);
-            fprintf(f, "Descrição: %s\n", lista[i].descricao);
+            fprintf(f, "Descricao: %s\n", lista[i].descricao);
             fprintf(f, "----------------------------------------------------\n");
         }
     }
 
-    fprintf(f, "\nFim do relatório.\n");
+    fprintf(f, "\nFim do relatorio.\n");
     fprintf(f, "====================================================\n");
 
     fclose(f);
 
-    printf("Relatório gerado com sucesso em: data/relatorio_elas.txt\n");
+    printf("Relatorio gerado com sucesso em: data/relatorio_elas.txt\n");
 }
