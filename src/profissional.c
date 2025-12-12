@@ -11,9 +11,9 @@ static int gerarNovoId(Profissional lista[], int count) {
     return maxId + 1;
 }
 
-int cadastrar(Profissional lista[], int count) {
+int cadastrar(Profissional lista[], int count) { //Cadastro de profissionais.
     if (count >= MAX_PROFISSIONAIS) {
-        printf("Limite máximo de cadastros atingido.\n");
+        printf("Limite maximo de cadastros atingido.\n");
         return count;
     }
 
@@ -23,13 +23,13 @@ int cadastrar(Profissional lista[], int count) {
     printf("Nome: ");
     lerStringSegura(p.nome, sizeof(p.nome));
 
-    printf("Área: ");
+    printf("Area: ");
     lerStringSegura(p.area, sizeof(p.area));
 
     printf("Contato: ");
     lerStringSegura(p.contato, sizeof(p.contato));
 
-    printf("Descrição: ");
+    printf("Descricao: ");
     lerStringSegura(p.descricao, sizeof(p.descricao));
 
     lista[count] = p;
@@ -37,7 +37,7 @@ int cadastrar(Profissional lista[], int count) {
     return count + 1;
 }
 
-void listar(Profissional lista[], int count) {
+void listar(Profissional lista[], int count) { //Para listar os profissionais cadastrados.
     if (count == 0) {
         printf("Nenhuma profissional cadastrada.\n");
         return;
@@ -46,13 +46,13 @@ void listar(Profissional lista[], int count) {
     for (int i = 0; i < count; i++) {
         printf("\nID: %d\n", lista[i].id);
         printf("Nome: %s\n", lista[i].nome);
-        printf("Área: %s\n", lista[i].area);
+        printf("Area: %s\n", lista[i].area);
         printf("Contato: %s\n", lista[i].contato);
-        printf("Descrição: %s\n", lista[i].descricao);
+        printf("Descricao: %s\n", lista[i].descricao);
         printf("----------------------------------------------------\n");
     }
 }
-
+//Aqui temos a busca por ID, edição e botão de exclusão.
 int buscarPorId(Profissional lista[], int count, int id) {
     for (int i = 0; i < count; i++) {
         if (lista[i].id == id) return i;
@@ -75,7 +75,7 @@ void editar(Profissional lista[], int count, int id) {
         lista[idx].nome[sizeof(lista[idx].nome)-1] = '\0';
     }
 
-    printf("Nova área (enter para manter): ");
+    printf("Nova area (enter para manter): ");
     if (lerStringOpcional(buffer, sizeof(buffer))) {
         strncpy(lista[idx].area, buffer, sizeof(lista[idx].area));
         lista[idx].area[sizeof(lista[idx].area)-1] = '\0';
@@ -87,7 +87,7 @@ void editar(Profissional lista[], int count, int id) {
         lista[idx].contato[sizeof(lista[idx].contato)-1] = '\0';
     }
 
-    printf("Nova descrição (enter para manter): ");
+    printf("Nova descricao (enter para manter): ");
     if (lerStringOpcional(buffer, sizeof(buffer))) {
         strncpy(lista[idx].descricao, buffer, sizeof(lista[idx].descricao));
         lista[idx].descricao[sizeof(lista[idx].descricao)-1] = '\0';
@@ -99,7 +99,7 @@ void editar(Profissional lista[], int count, int id) {
 int excluir(Profissional lista[], int count, int id) {
     int idx = buscarPorId(lista, count, id);
     if (idx == -1) {
-        printf("ID não encontrado.\n");
+        printf("ID nao encontrado.\n");
         return count;
     }
 
