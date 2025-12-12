@@ -12,11 +12,11 @@ void menuPrincipal(Profissional lista[], int *count) {
     int opcao;
 
     do {
-        system("cls || clear");
+        system("cls || clear"); /* cls limpa tela no Windows e o clear limpa tela no Linux*/
 
         printf("\n====================================================\n");
         printf("                     SISTEMA ELAs\n");
-        printf("      Gestão de Profissionais Feita para Mulheres\n");
+        printf("      Gestao de Profissionais Feita para Mulheres\n");
         printf("====================================================\n\n");
 
         printf("  1. Cadastrar profissional\n");
@@ -24,18 +24,18 @@ void menuPrincipal(Profissional lista[], int *count) {
         printf("  3. Editar profissional\n");
         printf("  4. Excluir profissional\n");
         printf("  5. Buscar por nome\n");
-        printf("  6. Buscar por área\n");
+        printf("  6. Buscar por area\n");
         printf("  7. Ordenar por nome\n");
-        printf("  8. Ordenar por área\n");
+        printf("  8. Ordenar por area\n");
         printf("  9. Ordenar por ID\n");
-        printf(" 10. Gerar relatório em arquivo .txt\n");
+        printf(" 10. Gerar relatorio em arquivo .txt\n");
         printf(" 11. Salvar dados\n");
         printf(" 12. Sair do sistema\n");
 
         printf("\n----------------------------------------------------\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
 
-        opcao = lerInteiroSeguro();  /* usa validação */
+        opcao = lerInteiroSeguro(); /* usa validação, função que lê um número e impede entrada inválida. */
         printf("\n");
 
         switch (opcao) {
@@ -79,7 +79,7 @@ void menuPrincipal(Profissional lista[], int *count) {
 
             case 6: {
                 char area[100];
-                printf("Digite a área para buscar: ");
+                printf("Digite a area para buscar: ");
                 lerStringSegura(area, sizeof(area));
                 buscarPorArea(lista, *count, area);
                 pausar();
@@ -116,11 +116,11 @@ void menuPrincipal(Profissional lista[], int *count) {
                 break;
 
             case 12:
-                printf("Encerrando o sistema... até logo!\n");
+                printf("Encerrando o sistema... ate logo!\n");
                 break;
 
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
                 pausar();
         }
 
